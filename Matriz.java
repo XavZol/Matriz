@@ -1,42 +1,32 @@
 import java.util.Scanner;
 
-/* Utilizando dos matrices de tamaño 5x9 y 9x5, cargar la primera y trasponerla en la segunda. */
+/* Crear una matriz "marco" de tamaño 5x5: todos sus elementos deben ser 0 salvo los de los de los bordes que deben ser 1. Mostrarla. */
 public class Matriz {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int matriz1[][], matriz2[][];
-
-        matriz1 = new int[5][9];
-        matriz2 = new int[9][5];
-
-        System.out.println("Digite la matriz: ");
+        int matriz[][] = new int[5][5];
+        // Rellenando la matriz
         for(int i=0; i<5; i++) {
-            for(int j=0; j<9; j++) {
-                System.out.print("Matriz["+i+"] ["+j+"]: ");
-                matriz1[i][j] = entrada.nextInt();
-            }
-        }
-        System.out.println("\nLa matriz original es: ");
-        for(int i=0; i<5; i++) {
-            for(int j=0; j<9; j++) {
-                System.out.print(matriz1[i][j]+ " ");
-            }
-            System.out.println("");
-        }
-
-        // Trasponemos
-        for(int i=0; i<5; i++) {
-            for(int j=0; j<9; j++) {
-                matriz2[j][i] = matriz1[i][j];
-            }
-        }
-        System.out.println("\nLa matriz traspuesta es: ");
-        for(int i=0; i<9; i++) {
             for(int j=0; j<5; j++) {
-                System.out.print(matriz2[i][j]+" ");
+                if(i==0 || i==4) { //Delimita las columnas
+                    matriz[i][j] = 1;
+                }
+                else if(j==0 || j==4) {
+                    matriz[i][j] = 1;
+                }
+                else {
+                    matriz[i][j] = 0;
+                }
+            }
+        }
+        System.out.println("La matriz es: \n");
+        for(int i=0; i<5; i++) {
+            for(int j=0; j<5; j++) {
+                System.out.print(matriz[i][j]+" ");
             }
             System.out.println("");
         }
+        System.out.println("");
     }
 }
