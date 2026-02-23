@@ -1,29 +1,49 @@
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-/* Crear una matriz de tamaño 7x7 y rellenarla de forma que los elementos de la diagonal principal sean 1 y el resto 0 */
+/* Crear y cargar una matriz de tamaño n x m, mostrar la suma de cada fila y de cada columna. */
 public class Matriz {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int matriz[][] = new int[7][7];
+        int matriz[][], nFilas,nCol, sumaFilas, sumaCol;
 
-        for(int i=0; i<7; i++) {
-            for(int j=0; j<7; j++) {
-                if(i==j) {
-                    matriz[i][j] = 1;
-                }
-                else {
-                    matriz[i][j] = 0;
-                }
+        nFilas = Integer.parseInt(JOptionPane.showInputDialog("Digite el número de filas: "));
+        nCol = Integer.parseInt(JOptionPane.showInputDialog("Digite el número de columnas: "));
+
+        matriz = new int[nFilas][nCol];
+
+        System.out.println("Digite la matriz");
+        for(int i=0; i<nFilas; i++) {
+            for(int j=0; j<nCol; j++) {
+                System.out.print("Matriz["+i+"] ["+j+"]: ");
+                matriz[i][j] = entrada.nextInt();
             }
         }
-
-        // Ahora, imprimimos la matriz
-        for(int i=0; i<7; i++) {
-            for(int j=0; j<7; j++) {
+        System.out.println("\nla matriz es: ");
+        for(int i=0; i<nFilas; i++) {
+            for(int j=0; j<nCol; j++) {
                 System.out.print(matriz[i][j]+" ");
             }
             System.out.println("");
         }
+        // SUMA de las filas 
+        for(int i=0; i<nFilas; i++) {
+            sumaFilas = 0;
+            for(int j=0; j<nCol; j++) {
+                sumaFilas += matriz[i][j];
+            }
+            System.out.print("\nLa suma de la fila["+i+"] es: "+sumaFilas);
+        }
+        System.out.println("");
+        // SUMA de las columnas
+        for(int j=0; j<nCol; j++) {
+            sumaCol = 0;
+            for(int i=0; i<nFilas; i++) {
+                sumaCol += matriz[i][j];
+            }
+            System.out.print("\nLa suma de la columna["+j+"] es: "+sumaCol);
+        }
+        System.out.print("");
     }
 }
