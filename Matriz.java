@@ -1,38 +1,26 @@
 import java.util.Scanner;
 
-/* Crear y cargar una matriz de tamaño 3x3, trasponerla y mostrarla. */
+/* Crear una matriz de tamaño 7x7 y rellenarla de forma que los elementos de la diagonal principal sean 1 y el resto 0 */
 public class Matriz {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int matriz[][] = new int[3][3];
+        int matriz[][] = new int[7][7];
 
-        System.out.println("Digite la matriz");
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
-                System.out.print("Matriz["+i+"] ["+j+"]: ");
-                matriz[i][j] = entrada.nextInt();
+        for(int i=0; i<7; i++) {
+            for(int j=0; j<7; j++) {
+                if(i==j) {
+                    matriz[i][j] = 1;
+                }
+                else {
+                    matriz[i][j] = 0;
+                }
             }
         }
-        System.out.println("\nMatriz original: ");
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
-                System.out.print(matriz[i][j]+" ");
-            }
-            System.out.println("");
-        }
-        // Transponer la matriz
-        int aux;
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<i; j++) {
-                aux = matriz[i][j];
-                matriz[i][j] = matriz[j][i];
-                matriz[j][i] = aux;
-            }
-        }
-        System.out.println("\nLa matriz transpuesta es: ");
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
+
+        // Ahora, imprimimos la matriz
+        for(int i=0; i<7; i++) {
+            for(int j=0; j<7; j++) {
                 System.out.print(matriz[i][j]+" ");
             }
             System.out.println("");
