@@ -1,41 +1,39 @@
 import java.util.Scanner;
 
-/* Crear y cargar dos matrices de tamaño 3x3, sumarlas y mostrar su suma. */
+/* Crear y cargar una matriz de tamaño 3x3, trasponerla y mostrarla. */
 public class Matriz {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int matriz1[][], matriz2[][], suma[][];
+        int matriz[][] = new int[3][3];
 
-        matriz1 = new int[3][3];
-        matriz2 = new int[3][3];
-
-        System.out.println("Digite la matriz 1: ");
+        System.out.println("Digite la matriz");
         for(int i=0; i<3; i++) {
             for(int j=0; j<3; j++) {
-                System.out.print("Matriz1["+i+"] ["+j+"]: ");
-                matriz1[i][j] = entrada.nextInt();
+                System.out.print("Matriz["+i+"] ["+j+"]: ");
+                matriz[i][j] = entrada.nextInt();
             }
         }
-        System.out.println("\nDigite la matriz 2: ");
+        System.out.println("\nMatriz original: ");
         for(int i=0; i<3; i++) {
             for(int j=0; j<3; j++) {
-                System.out.print("Matriz2["+i+"] ["+j+"]: ");
-                matriz2[i][j] = entrada.nextInt();
+                System.out.print(matriz[i][j]+" ");
+            }
+            System.out.println("");
+        }
+        // Transponer la matriz
+        int aux;
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<i; j++) {
+                aux = matriz[i][j];
+                matriz[i][j] = matriz[j][i];
+                matriz[j][i] = aux;
             }
         }
-        // Vamos a sumar las matrices
-        suma = new int[3][3];
+        System.out.println("\nLa matriz transpuesta es: ");
         for(int i=0; i<3; i++) {
             for(int j=0; j<3; j++) {
-                suma[i] [j] = matriz1[i] [j] + matriz2[i] [j];
-            }
-        }
-
-        System.out.println("\nLa suma de las matrices es: ");
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
-                System.out.print(suma[i][j]+" ");
+                System.out.print(matriz[i][j]+" ");
             }
             System.out.println("");
         }
