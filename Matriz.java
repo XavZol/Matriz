@@ -1,48 +1,43 @@
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
-/*Crear y cargar una matriz de tamaño n x m y decir si es simétrica o no. */
+/* Crear y cargar dos matrices de tamaño 3x3, sumarlas y mostrar su suma. */
 public class Matriz {
     
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int matriz[][], nFilas,nCol;
-        boolean simetrica = true;
+        int matriz1[][], matriz2[][], suma[][];
 
-        nFilas = Integer.parseInt(JOptionPane.showInputDialog("Digite el número de filas: "));
-        nCol = Integer.parseInt(JOptionPane.showInputDialog("Digite el número de columnas: "));
+        matriz1 = new int[3][3];
+        matriz2 = new int[3][3];
 
-        matriz = new int[nFilas][nCol];
-
-        System.out.println("Digite una matriz: ");
-        for(int i=0; i<nFilas; i++) {
-            for(int j=0; j<nCol; j++) {
-                System.out.print("Matriz ["+i+"] ["+j+"]: ");
-                matriz[i][j] = entrada.nextInt();
+        System.out.println("Digite la matriz 1: ");
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
+                System.out.print("Matriz1["+i+"] ["+j+"]: ");
+                matriz1[i][j] = entrada.nextInt();
             }
         }
-        if(nFilas == nCol) { //Si el número de filas es igual al de Columnas
-            int i,j;
-            i=0;
-            while(i<nFilas && simetrica == true) {
-                j=0;
-                while(j<i && simetrica == true) {
-                    if(matriz[i][j] != matriz[j][i]) {
-                        simetrica = false;
-                    }
-                    j++;
-                }
-                i++;
-            }
-            if(simetrica == true) {
-                JOptionPane.showMessageDialog(null, "La matriz es simétrica");
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "La matriz no es simétrica");
+        System.out.println("\nDigite la matriz 2: ");
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
+                System.out.print("Matriz2["+i+"] ["+j+"]: ");
+                matriz2[i][j] = entrada.nextInt();
             }
         }
-        else {
-            JOptionPane.showMessageDialog(null, "La matriz no es simétrica");
+        // Vamos a sumar las matrices
+        suma = new int[3][3];
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
+                suma[i] [j] = matriz1[i] [j] + matriz2[i] [j];
+            }
+        }
+
+        System.out.println("\nLa suma de las matrices es: ");
+        for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
+                System.out.print(suma[i][j]+" ");
+            }
+            System.out.println("");
         }
     }
 }
